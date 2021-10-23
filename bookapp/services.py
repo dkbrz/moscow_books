@@ -1,7 +1,7 @@
 import sqlalchemy.orm as _orm
 
-import app.database as _database
-from app.models import (
+import bookapp.database as _database
+from bookapp.models import (
     Recommendations,
     DEFAULT_RECOMMENDATION,
     RecommendationsShort,

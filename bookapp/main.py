@@ -1,9 +1,9 @@
 import fastapi as _fastapi
 import uvicorn
 
-import app.services as _services
-import app.schemas as _schemas
-from app.database import async_session
+import bookapp.services as _services
+import bookapp.schemas as _schemas
+from bookapp.database import async_session
 
 description = """
 Тестовый стенд API рекомендаций для московских библиотек команды ```Дальнее чтение```
@@ -57,7 +57,7 @@ async def recommend_full(user_id: int):
             return result
 
 
-# @app.get(
+# @bookapp.get(
 #     "/api/v0/recommend/short/{user_id}",
 #     response_model=_schemas.Recommendation,
 #     status_code=200)

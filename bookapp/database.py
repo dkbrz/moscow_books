@@ -4,7 +4,7 @@ import sqlalchemy.orm as _orm
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 
 try:
-    from app.config import DATABASE_URL
+    from bookapp.config import DATABASE_URL
 except ModuleNotFoundError:
     DATABASE_URL = "sqlite+aiosqlite:///./predictions.db"
 

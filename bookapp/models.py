@@ -1,6 +1,6 @@
 import sqlalchemy as _sql
-import app.database as _database
-from app.default_recommendation import DEFAULT_RECOMMENDATION
+import bookapp.database as _database
+from bookapp.default_recommendation import DEFAULT_RECOMMENDATION
 
 
 class Recommendations(_database.Base):
