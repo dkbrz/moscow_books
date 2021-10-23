@@ -57,21 +57,5 @@ async def recommend_full(user_id: int):
             return result
 
 
-# @bookapp.get(
-#     "/api/v0/recommend/short/{user_id}",
-#     response_model=_schemas.Recommendation,
-#     status_code=200)
-# async def recommend_short(user_id: int):
-#     """
-#     Return recommendations from DB
-#     :param user_id: user_id from big dataset
-#     :return: json
-#     """
-#     async with async_session() as session:
-#         async with session.begin():
-#             result = await _services.get_short(userid=user_id,db=session)
-#             return result
-
-
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
