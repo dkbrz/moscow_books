@@ -37,9 +37,15 @@ description = """
 
 app = _fastapi.FastAPI(
     title="Рекомендации для библиотек. Команда Дальнее чтение",
-    docs_url="/",
+    # docs_url="/",
     description=description
 )
+
+
+@app.get("/")
+def index():
+    return {"Moscow books": "OK"}
+
 
 @app.get(
     "/api/v0/recommend/full/{user_id}",
