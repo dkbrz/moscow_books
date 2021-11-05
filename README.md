@@ -10,9 +10,11 @@
 
 ## Файлы и как запускать
 
-- process_data
-  - [data_to_db.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_data/data_to_db.ipynb) : информация из файлов складывается в SQLite базу, чтобы было удобно работать
-  - [predictions.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_data/predictions.ipynb) : собственно предсказания и складывание их в другую базу для API
+- process_new
+  - [prepare_data.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/prepare_data.ipynb) : информация из файлов складывается в SQLite базу, чтобы было удобно работать
+  - [model_books_only.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/model_books_only.ipynb) : закономерности, когда какие-то книжки берут подряд (внутри автора или без автора)
+  - [model_authors.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/model_authors.ipynb) : построение графа по авторам и их связям внутри рубрик 2 уровня
+  - [predictions.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/predictions.ipynb) : построение предсказаний и складывание их в базу
   - contest_predictions.ipynb : специальная версия для формирования полной выборки в CSV для проверки
 - demoapp : версия для PythonAnyWhere, который не поддерживает полную версию
 - bookapp : основная версия API
@@ -38,7 +40,7 @@ requirements.txt - библиотеки для установки (в корне
 - models.py - модель БД
 - schemas.py - схема, описывающая ответ
 - services.py - функция обработки запроса к базе
-- predictions.db : база результатов предсказаний
+- predictions.db : база результатов предсказаний (в корень demoapp)
 
 
 **Модель**
@@ -48,10 +50,10 @@ requirements.txt - библиотеки для установки (в корне
 
 ## Результаты для проверки CSV
 
+**обновляется**
 Вот [тут](https://drive.google.com/drive/folders/1qMSL5amDjwvLELGKPNZO8m2BRZ5YYvcF?usp=sharing) два файла: test_all - это те, кто попался в circulation как бравший книгу (173к человек), test_sample - пользователи из файла knigi_1
 
 ## Веб-интерфейс
 
 - [Веб-интерфейс](http://dkbrz4.pythonanywhere.com/)
-- [Если что-то пойдет совсем не так](https://docs.google.com/spreadsheets/d/1H4-Fmjm-uPK5huXECRGGx6QVJiZJdtXSddFTqLtBFck/)
 - 
