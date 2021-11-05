@@ -10,7 +10,12 @@
 
 ## Файлы и как запускать
 
-- process_new
+- data
+  - books.jsonlines
+  - books_full.jsonlines
+  - circulation[].csv
+  - rubrics.csv
+- process_new (запускать по очереди)
   - [prepare_data.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/prepare_data.ipynb) : информация из файлов складывается в SQLite базу, чтобы было удобно работать
   - [model_books_only.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/model_books_only.ipynb) : закономерности, когда какие-то книжки берут подряд (внутри автора или без автора)
   - [model_authors.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/model_authors.ipynb) : построение графа по авторам и их связям внутри рубрик 2 уровня
@@ -41,12 +46,6 @@ requirements.txt - библиотеки для установки (в корне
 - schemas.py - схема, описывающая ответ
 - services.py - функция обработки запроса к базе
 - predictions.db : база результатов предсказаний (в корень demoapp)
-
-
-**Модель**
-
-1. [data_to_db.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_data/data_to_db.ipynb) - подготовка данных
-2. [predictions.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_data/predictions.ipynb) - составление графа и прогон предсказаний, можно изменить финальную функцию под нужный формат выдачи
 
 ## Результаты для проверки CSV
 
