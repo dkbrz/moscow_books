@@ -15,6 +15,8 @@ def index():
         recommend = Recommendation.query.get(user_id)
         if recommend is None:
             recommend = Recommendation(id=0, history=[], recommendations=DEFAULT_RECOMMENDATION)
+        elif recommend.recommendations == []:
+            recommend.recommendations=DEFAULT_RECOMMENDATION
     else:
         recommend, user_id = None, 0
     return render_template("index.html", recommend=recommend, user_id=user_id)
