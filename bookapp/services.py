@@ -1,9 +1,25 @@
 import sqlalchemy.orm as _orm
+from sqlalchemy import select
 
 import bookapp.database as _database
 from bookapp.models import (
-    Recommendations,
+    Recommendation,
+    History
 )
+
+
+class Result:
+
+    def __init__(self, uid, history, recommend):
+        self.id = uid
+        self.add("history", history)
+        self.add("recommendations", recommend)
+
+    def add(self, attr, value_list):
+        setattr(self, attr, [
+            {"id": b[0].book.id, "title": b[0].book.title, "author": b[0].book.author}
+            for b in value_list
+        ])
 
 
 def create_database():
@@ -19,9 +35,10 @@ def get_db():
 
 
 async def get_basic(userid: int, db: _orm.Session):
-    result = await db.get(Recommendations, userid)
-    if result is None:
-        result = await db.get(Recommendations, userid)
-    elif not result.recommendations:
-        result.recommendations = db.get(Recommendations, userid).recommendations
+    recommend = await db.execute(select(Recommendation).filter(Recommendation.iduser == userid))
+    history = await db.execute(select(History).filter(History.iduser == userid))
+    result = Result(userid, history, recommend)
+    if not result.recommendations:
+        recommend = await db.execute(select(Recommendation).filter(Recommendation.iduser == 0))
+        result.add("recommendations", recommend)
     return result

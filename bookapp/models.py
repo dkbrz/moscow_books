@@ -1,22 +1,24 @@
 import sqlalchemy as _sql
-import json
-import zlib
 import bookapp.database as _database
 
 
-class CompressedJSON(_sql.types.TypeDecorator):
-    impl = _sql.types.LargeBinary
+class Books(_database.Base):
+    __tablename__ = "books"
 
-    def process_result_value(self, value, dialect):
-        if value is None:
-            return []
-        res = json.loads(zlib.decompress(value).decode("utf-8"))
-        return res
+    id = _sql.Column("id", _sql.Integer, index=True, primary_key=True)
+    title = _sql.Column("title", _sql.Text)
+    author = _sql.Column("author", _sql.Text)
 
 
-class Recommendations(_database.Base):
+class Recommendation(_database.Base):
     __tablename__ = "recommendations"
-    id = _sql.Column("id", _sql.Integer, primary_key=True, index=True)
-    history = _sql.Column(CompressedJSON)
-    recommendations = _sql.Column(CompressedJSON, default=[])
+    iduser = _sql.Column("iduser", _sql.Integer, index=True, primary_key=True)
+    idbook = _sql.Column("book", _sql.Integer, _sql.ForeignKey("books.id"), index=True, primary_key=True)
+    book = _sql.orm.relationship("Books", lazy='joined')
 
+
+class History(_database.Base):
+    __tablename__ = "history"
+    iduser = _sql.Column("iduser", _sql.Integer, index=True, primary_key=True)
+    idbook = _sql.Column("book", _sql.Integer, _sql.ForeignKey("books.id"), index=True, primary_key=True)
+    book = _sql.orm.relationship("Books", lazy='joined')
