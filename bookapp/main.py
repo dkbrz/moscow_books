@@ -60,7 +60,6 @@ async def recommend_full(user_id: int):
     async with async_session() as session:
         async with session.begin():
             result = await _services.get_basic(userid=user_id, db=session)
-            print(result)
             return result
 
 
