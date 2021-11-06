@@ -1,23 +1,29 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import types
-import zlib
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import relationship
 import json
 
 db = SQLAlchemy()
 
 
-class CompressedJSON(types.TypeDecorator):
-    impl = types.LargeBinary
+class Books(db.Model):
+    __tablename__ = "books"
 
-    def process_result_value(self, value, dialect):
-        if value is None:
-            return []
-        res = json.loads(zlib.decompress(value).decode("utf-8"))
-        return res
+    id = db.Column("id", db.Integer, index=True, primary_key=True)
+    title = db.Column("title", db.Text)
+    author = db.Column("author", db.Text)
 
 
 class Recommendation(db.Model):
     __tablename__ = "recommendations"
-    id = db.Column("id", db.Integer, primary_key=True, index=True)
-    history = db.Column(CompressedJSON)
-    recommendations = db.Column(CompressedJSON, default=[])
+    iduser = db.Column("iduser", db.Integer, index=True, primary_key=True)
+    idbook = db.Column("book", db.Integer, ForeignKey("books.id"), index=True, primary_key=True)
+    book = relationship("Books", lazy='joined')
+
+
+class History(db.Model):
+    __tablename__ = "history"
+    iduser = db.Column("iduser", db.Integer, index=True, primary_key=True)
+    idbook = db.Column("book", db.Integer, ForeignKey("books.id"), index=True, primary_key=True)
+    book = relationship("Books", lazy='joined')
