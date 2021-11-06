@@ -7,10 +7,13 @@
 - circulation_*.csv
 - books_full.json
 
+## Результаты предсказаний (result.csv)
+
+[тут](https://drive.google.com/drive/folders/1LPgGO22ddP6JJMzngKchXY8uiixvf8Kz?usp=sharing)
 
 ## Файлы и как запускать
 
-- data
+- data ([скачать тут](https://drive.google.com/file/d/1W8DjwpaiJOQYS2nO2t5lYsrrq7ossO-d/view?usp=sharing))
   - books.jsonlines
   - books_full.jsonlines
   - circulation[].csv
@@ -47,12 +50,6 @@ requirements.txt - библиотеки для установки (в корне
 - services.py - функция обработки запроса к базе
 - predictions.db : база результатов предсказаний (в корень demoapp)
 
-## Результаты для проверки CSV
-
-**обновляется**
-Вот [тут](https://drive.google.com/drive/folders/1qMSL5amDjwvLELGKPNZO8m2BRZ5YYvcF?usp=sharing) два файла: test_all - это те, кто попался в circulation как бравший книгу (173к человек), test_sample - пользователи из файла knigi_1
-
 ## Веб-интерфейс
 
 - [Веб-интерфейс](http://dkbrz4.pythonanywhere.com/)
-- 
