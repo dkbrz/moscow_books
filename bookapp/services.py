@@ -3,7 +3,6 @@ import sqlalchemy.orm as _orm
 import bookapp.database as _database
 from bookapp.models import (
     Recommendations,
-    DEFAULT_RECOMMENDATION,
 )
 
 
@@ -22,5 +21,7 @@ def get_db():
 async def get_basic(userid: int, db: _orm.Session):
     result = await db.get(Recommendations, userid)
     if result is None:
-        result = Recommendations(id=0, history=[], recommendations=DEFAULT_RECOMMENDATION)
+        result = await db.get(Recommendations, userid)
+    elif not result.recommendations:
+        result.recommendations = db.get(Recommendations, userid).recommendations
     return result
