@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from demoapp.models import db, Recommendation, DEFAULT_RECOMMENDATION
+from demoapp.models import db, Recommendation
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///predictions.db'
@@ -14,9 +14,9 @@ def index():
         user_id = request.args.get("uid")
         recommend = Recommendation.query.get(user_id)
         if recommend is None:
-            recommend = Recommendation(id=0, history=[], recommendations=DEFAULT_RECOMMENDATION)
-        elif recommend.recommendations == []:
-            recommend.recommendations=DEFAULT_RECOMMENDATION
+            recommend = Recommendation.query.get(0)
+        elif not recommend.recommendations:
+            recommend.recommendations = Recommendation.query.get(0).recommendations
     else:
         recommend, user_id = None, 0
     return render_template("index.html", recommend=recommend, user_id=user_id)
