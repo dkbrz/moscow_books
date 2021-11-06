@@ -13,7 +13,7 @@
 
 ## Файлы и как запускать
 
-- data ([скачать тут](https://drive.google.com/file/d/1W8DjwpaiJOQYS2nO2t5lYsrrq7ossO-d/view?usp=sharing))
+- data ([скачать тут](https://drive.google.com/file/d/1W8DjwpaiJOQYS2nO2t5lYsrrq7ossO-d/view?usp=sharing)) + [dataset_knigi_1.xlsx](https://docs.google.com/spreadsheets/d/1gvOln8NKyMFADDndPxU5Jl6SISV11GX5/edit?usp=sharing&ouid=115956949429926474048&rtpof=true&sd=true)
   - books.jsonlines
   - books_full.jsonlines
   - circulation[].csv
@@ -23,7 +23,7 @@
   - [model_books_only.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/model_books_only.ipynb) : закономерности, когда какие-то книжки берут подряд (внутри автора или без автора)
   - [model_authors.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/model_authors.ipynb) : построение графа по авторам и их связям внутри рубрик 2 уровня
   - [predictions.ipynb](https://github.com/dkbrz/moscow_books/blob/main/process_new/predictions.ipynb) : построение предсказаний и складывание их в базу
-  - contest_predictions.ipynb : специальная версия для формирования полной выборки в CSV для проверки
+  - predictions_contest.ipynb : специальная версия для формирования полной выборки в CSV для проверки
 - demoapp : версия для PythonAnyWhere, который не поддерживает полную версию
 - bookapp : основная версия API
 
