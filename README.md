@@ -13,6 +13,8 @@
 
 ## Файлы и как запускать
 
+requirements.txt - настройка среды
+
 - data ([скачать тут](https://drive.google.com/file/d/1W8DjwpaiJOQYS2nO2t5lYsrrq7ossO-d/view?usp=sharing)) + [dataset_knigi_1.xlsx](https://docs.google.com/spreadsheets/d/1gvOln8NKyMFADDndPxU5Jl6SISV11GX5/edit?usp=sharing&ouid=115956949429926474048&rtpof=true&sd=true)
   - books.jsonlines
   - books_full.jsonlines
