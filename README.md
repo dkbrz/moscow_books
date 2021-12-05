@@ -56,4 +56,4 @@ requirements.txt - библиотеки для установки (в корне
 
 **demoapp** - специальная версия стенда на платформе PythonAnyWhere
 
-- [Веб-интерфейс](http://dkbrz4.pythonanywhere.com/)
+- Веб-интерфейс (удален)
